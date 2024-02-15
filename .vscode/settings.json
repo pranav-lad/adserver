@@ -3,6 +3,9 @@
         "*.embeddedhtml": "html",
         "ad_server.h": "c",
         "local_data_structure.h": "c",
-        "data_structure.h": "c"
+        "data_structure.h": "c",
+        "cstdlib": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
     }
 }

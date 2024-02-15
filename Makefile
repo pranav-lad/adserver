@@ -1,7 +1,6 @@
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-LIBS = -lmemcached -lmysqlclient
 
 # Directories
 SRC_DIR = src
@@ -21,7 +20,7 @@ all: $(TARGET)
 
 # Rule to link object files into binary
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LIBS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
 
 # Rule to compile individual source files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -29,7 +28,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 # Rule to run the binary
 run:
-	spawn-fcgi -p 8000 -n $(TARGET)
+	$(TARGET)
 
 # Clean rule to remove object files and binary
 clean:
