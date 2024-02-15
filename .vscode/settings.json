@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "ad_server.h": "c",
+        "local_data_structure.h": "c",
+        "data_structure.h": "c"
+    }
+}
