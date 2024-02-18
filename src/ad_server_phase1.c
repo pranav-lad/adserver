@@ -11,23 +11,36 @@ typedef struct {
     char homepage[MAX_HOMEPAGE_LENGTH];
 } UserHomepageMapping;
 
-void open_url(const char* url) {
-#ifdef _WIN32
-    // Windows
-    char command[256];
-    snprintf(command, sizeof(command), "start %s", url);
+
+#include <stdlib.h>
+
+void open_url(const char *url) {
+    char command[256];  // Assuming a reasonable maximum length for the command
+
+    // Construct the command to open the URL
+    snprintf(command, sizeof(command), "xdg-open %s", url);
+
+    // Execute the command using system
     system(command);
-#elif __linux__
-    // Linux
-    system("xdg-open %s", url);
-#elif __APPLE__
-    // macOS
-    system("open %s", url);
-#else
-    // Unsupported platform
-    printf("Error: Unsupported platform\n");
-#endif
 }
+
+// void open_url(const char* url) {
+// #ifdef _WIN32
+//     // Windows
+//     char command[256];
+//     snprintf(command, sizeof(command), "start %s", url);
+//     system(command);
+// #elif __linux__
+//     // Linux
+//     system("xdg-open %s", url);
+// #elif __APPLE__
+//     // macOS
+//     system("open %s", url);
+// #else
+//     // Unsupported platform
+//     printf("Error: Unsupported platform\n");
+// #endif
+// }
 // Function prototypes and definitions for local data structure operations
 void initialize_local_data_structure(UserHomepageMapping** data_structure, int size) {
     *data_structure = (UserHomepageMapping*)malloc(size * sizeof(UserHomepageMapping));
@@ -96,7 +109,7 @@ void process_http_request(char* username, int random_number, char* page_url) {
 
 int main() {
     // Example HTTP request
-    process_http_request("user2", 23, "https://example.com");
+    process_http_request("user1", 23, "https://example.com");
 
     return 0;
 }
